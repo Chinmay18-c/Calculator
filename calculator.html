@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body {
+      font-family: sans-serif; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      height: 100vh; 
+      margin: 0; 
+    }
+    .calculator_box {
+      border: 1px solid #ccc; 
+      padding: 20px; 
+      border-radius: 5px; 
+      background-color: #f0f0f0; 
+    }
+    #result_display {
+      width: 200px; 
+      margin-bottom: 10px; 
+      padding: 5px; 
+    }
+    .number_button, .operator_button, .equals_button, .clear_button {
+      width: 40px; 
+      height: 40px;
+      margin: 5px; 
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator_box">
+    <input type="text" id="result-display" readonly> <br>
+
+    <button class="number_button" onclick="resultBox('7')">7</button>
+    <button class="number_button" onclick="resultBox('8')">8</button>
+    <button class="number_button" onclick="resultBox('9')">9</button>
+    <button class="operator_button" onclick="resultBox('+')">+</button> <br>
+
+    <button class="number_button" onclick="resultBox('4')">4</button> 
+    <button class="number_button" onclick="resultBox('5')">5</button>
+    <button class="number_button" onclick="resultBox('6')">6</button>
+    <button class="operator_button" onclick="resultBox('-')">-</button> <br>
+
+    <button class="number_button" onclick="resultBox('1')">1</button>
+    <button class="number_button" onclick="resultBox('2')">2</button>
+    <button class="number_button" onclick="resultBox('3')">3</button>
+    <button class="operator_button" onclick="resultBox('*')">*</button> <br>
+
+    <button class="number_button" onclick="resultBox('0')">0</button>
+    <button class="number_button" onclick="resultBox('.')">.</button>
+    <button class="equals_button" onclick="answer()">=</button>
+    <button class="operator_button" onclick="resultBox('/')">/</button> <br>
+
+    <button class="clear_button" onclick="clear()">C</button>
+  </div>
+  <script>
+    function resultBox(clickedNumber){
+      document.getElementById('result-display').value += clickedNumber;
+    }
+    function clear() {
+      document.getElementById('result-display').value = '';
+    }
+    function answer() {
+      try {
+        document.getElementById('result-display').value = eval(document.getElementById('result-display').value);
+      } catch (error) {
+        document.getElementById('result-display').value = 'Error';
+      }
+    }
+  </script>
+</body>
+</html>
